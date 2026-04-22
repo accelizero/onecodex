@@ -1,0 +1,43 @@
+appId: com.onecodex.app
+productName: onecodex
+copyright: Copyright © 2025 onecodex
+
+directories:
+  output: out
+
+files:
+  - dist/**/*
+  - launcher/**/*
+  - assets/**/*
+  - package.json
+
+afterPack: ./scripts/afterPack.js
+
+mac:
+  target:
+    - dmg
+    - zip
+  icon: assets/icon.icns
+  category: public.app-category.productivity
+  artifactName: "onecodex-${version}-${arch}-mac.${ext}"
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  notarize: true
+
+dmg:
+  sign: false
+  artifactName: "onecodex-${version}-${arch}.${ext}"
+
+win:
+  target: nsis
+  icon: assets/icon.ico
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  runAfterFinish: true
+  differentialPackage: false
+  artifactName: "onecodex-setup-${version}-${arch}.${ext}"
