@@ -1,0 +1,229 @@
+:root {
+  color-scheme: light;
+  --paper: #f5ecdf;
+  --panel: rgba(255, 250, 242, 0.84);
+  --ink: #231815;
+  --muted: #76675f;
+  --accent: #b8502f;
+  --accent-strong: #8f371d;
+  --line: rgba(35, 24, 21, 0.12);
+  --shadow: 0 24px 70px rgba(63, 35, 21, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Segoe UI Variable", "Avenir Next", "PingFang SC", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(184, 80, 47, 0.28), transparent 28%),
+    radial-gradient(circle at right center, rgba(244, 178, 98, 0.26), transparent 24%),
+    linear-gradient(145deg, #f9f0e4, #eadcc7 58%, #e6d3b8);
+}
+
+.station {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) minmax(560px, 1fr);
+  gap: 28px;
+  min-height: 100vh;
+  padding: 42px;
+}
+
+.hero,
+.console {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.hero {
+  padding: 36px 32px;
+  background: linear-gradient(180deg, rgba(255, 249, 241, 0.88), rgba(242, 226, 206, 0.92));
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.hero h1 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Iowan Old Style", serif;
+  font-size: clamp(36px, 5vw, 54px);
+  line-height: 1.02;
+}
+
+.lede {
+  margin: 0;
+  max-width: 28ch;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.console {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.88), rgba(255, 248, 240, 0.74));
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric,
+.panel,
+.notes {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.metric {
+  padding: 18px;
+}
+
+.metric-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.metric-value,
+.metric-link {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.metric-value.compact {
+  display: inline-block;
+  max-width: 100%;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.panel {
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+}
+
+.field,
+.toggle {
+  display: grid;
+  gap: 8px;
+}
+
+.field span,
+.toggle span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.field input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(35, 24, 21, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.field input:focus {
+  outline: 2px solid rgba(184, 80, 47, 0.22);
+  border-color: rgba(184, 80, 47, 0.48);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) 1fr;
+  gap: 16px;
+  align-items: end;
+}
+
+.toggle {
+  min-height: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(247, 239, 228, 0.86);
+  align-content: center;
+}
+
+.toggle input {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  background: rgba(35, 24, 21, 0.08);
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  background: rgba(35, 24, 21, 0.14);
+}
+
+button.primary {
+  color: #fff5eb;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+}
+
+.notes {
+  padding: 18px 20px;
+}
+
+.notes p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.message {
+  margin-top: 10px !important;
+  color: var(--accent-strong);
+  min-height: 1.4em;
+}
+
+@media (max-width: 960px) {
+  .station {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+
+  .metrics,
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self';">
+  <title>onecodex station</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="station">
+    <section class="hero">
+      <p class="eyebrow">onecodex station</p>
+      <h1>本地服务控制台</h1>
+      <p class="lede">保存 LLM 凭据，启动嵌入式 codexapp，并把浏览器引导到本地工作入口。</p>
+    </section>
+
+    <section class="console">
+      <div class="metrics">
+        <article class="metric">
+          <span class="metric-label">服务阶段</span>
+          <strong class="metric-value" id="phaseValue">idle</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">访问地址</span>
+          <a class="metric-link" id="addressValue" href="#" target="_blank" rel="noreferrer">-</a>
+        </article>
+        <article class="metric">
+          <span class="metric-label">最近错误</span>
+          <strong class="metric-value compact" id="errorValue">-</strong>
+        </article>
+      </div>
+
+      <form class="panel" id="settingsForm">
+        <label class="field">
+          <span>OpenAI API Key</span>
+          <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" spellcheck="false">
+        </label>
+
+        <label class="field">
+          <span>默认模型</span>
+          <input id="model" type="text" placeholder="例如 gpt-5 或 codex 默认模型" autocomplete="off" spellcheck="false">
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>首选端口</span>
+            <input id="preferredPort" type="number" min="1" max="65535" step="1">
+          </label>
+
+          <label class="toggle">
+            <input id="autoOpenBrowser" type="checkbox">
+            <span>启动成功后自动打开浏览器</span>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="primary" id="saveLaunchButton">保存并启动</button>
+          <button type="button" id="saveButton">仅保存配置</button>
+          <button type="button" id="startButton">启动服务</button>
+          <button type="button" id="stopButton">停止服务</button>
+          <button type="button" id="restartButton">重启服务</button>
+          <button type="button" id="browserButton">打开浏览器</button>
+        </div>
+      </form>
+
+      <section class="notes">
+        <p id="hintText">服务启动后会在本机监听一个 HTTP 端口，并由桌面壳层把默认浏览器指向该地址。</p>
+        <p class="message" id="message"></p>
+      </section>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

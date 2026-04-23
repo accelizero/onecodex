@@ -3,15 +3,15 @@ productName: onecodex
 copyright: Copyright © 2025 onecodex
 
 directories:
-  output: out
+  output: release
 
 files:
-  - dist/**/*
-  - launcher/**/*
+  - build/desktop/**/*
+  - ui-shell/**/*
   - assets/**/*
   - package.json
 
-afterPack: ./scripts/afterPack.js
+afterPack: ./ops/embed-bundle.cjs
 
 mac:
   target:
